@@ -3,6 +3,9 @@ MaelTableView
 
 An easy way to manage iOS UITableView and his sections.
 
+This class inherit from UITableView and it automatically manage calls from UITableViewDelegate.
+
+
 
 How to use
 ==============
