@@ -42,11 +42,14 @@
     [self setDataSource:self];
     
     //Every time the data is changing, we create new sections.
-    self.dttSections = [[NSMutableArray alloc] init];
-    self.dttIndexes = [[NSMutableArray alloc] init];
+    self.dttSections = nil;
+    self.dttIndexes = nil;
     
     if ([dttData count] > 0) {
         if (self.bWithSections) {
+            self.dttSections = [[NSMutableArray alloc] init];
+            self.dttIndexes = [[NSMutableArray alloc] init];
+            
             int lCount = 0;
             NSString *strPrev = @"";
             // Loop over the dictionary and check when a new section begin.
@@ -92,9 +95,9 @@
 #pragma mark - UITableView standard methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (self.bWithSections) {
-         return [self.dttSections count];
+        return [self.dttSections count];
     } else {
-       return 1;
+        return 1;
     }
 }
 
@@ -115,7 +118,11 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return (NSString *)[self.dttSections getDataAtRow:section andDictionaryKey:@"TAG"];
+    if (self.bWithSections) {
+        return (NSString *)[self.dttSections getDataAtRow:section andDictionaryKey:@"TAG"];
+    } else {
+        return @"";
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

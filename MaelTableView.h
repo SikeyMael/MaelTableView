@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @protocol MaelTableViewDelegate
-- (void)tableRowSelected:(UITableView *)sender selectedData:(NSMutableDictionary *)currentRow;
-- (UITableViewCell *)tableCreateCell:(UITableView *)sender usingData:(NSMutableDictionary *)currentRow;
+- (void)tableRowSelected:(UITableView *)sender selectedData:(NSDictionary *)currentRow;
+- (UITableViewCell *)tableCreateCell:(UITableView *)sender usingData:(NSDictionary *)currentRow;
 @end
 
 @interface MaelTableView : UITableView <UITableViewDataSource, UITableViewDelegate>
